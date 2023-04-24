@@ -17,6 +17,12 @@ android {
         versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+        Properties credentials = new Properties()
+        credentials.load(project.rootProject.file("local.properties").newDataInputStream())
+        buildConfigField "String", "CLIENT_ID", "\"${credentials.getProperty("CLIENT_ID")}\""
+        buildConfigField "String", "CLIENT_SECRET", "\"${credentials.getProperty("CLIENT_SECRET")}\""
+
     }
 
     buildTypes {

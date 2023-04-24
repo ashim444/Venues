@@ -1,5 +1,9 @@
 package com.example.venues.base.di
 
+import com.example.venues.BuildConfig
+import com.example.venues.data.local.VenueRepository
+import com.example.venues.data.local.models.ClientData
+import com.example.venues.data.local.repo.MainVenueRepository
 import com.example.venues.data.network.api.Endpoints
 import com.example.venues.data.network.interceptor.EndpointInterceptor
 import com.google.gson.Gson
@@ -42,5 +46,13 @@ object AppModule {
             .addConverterFactory(GsonConverterFactory.create(gson))
             .build()
             .create(Endpoints::class.java)
+    @Singleton
+    @Provides
+    fun provideClientData(): ClientData =
+        ClientData(clientId = BuildConfig.CLIENT_ID, clientSecret = BuildConfig.CLIENT_SECRET)
+
+    @Singleton
+    @Provides
+    fun provideVenueRepository(endpoints: Endpoints, clientData: ClientData) : VenueRepository = MainVenueRepository(endpoints, clientData)
 
 }
