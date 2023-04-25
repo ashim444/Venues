@@ -3,7 +3,6 @@ package com.example.venues.data.local.repo
 import com.example.venues.data.local.VenueRepository
 import com.example.venues.data.local.models.ClientData
 import com.example.venues.data.local.models.Venue
-import com.example.venues.data.local.models.VenueResponse
 import com.example.venues.data.local.utils.LocalResponse
 import com.example.venues.data.network.api.Endpoints
 import javax.inject.Inject
@@ -19,10 +18,10 @@ class MainVenueRepository @Inject constructor(
             val signedParams = signRequest(params)
             val response = api.venueSearch(signedParams)
             val result = response.body()
-            if(response.isSuccessful && result != null){
-                LocalResponse.Success(result.response.venues)
+            if(response.isSuccessful && result != null && result.meta.code == 200){
+                LocalResponse.Success(result.response?.venues!!)
             }else{
-                LocalResponse.Error(response.message() ?: "Error", response.code())
+                LocalResponse.Error(response.message() ?: "Error", result?.meta?.code ?: response.code())
             }
         }catch (e: Exception){
             LocalResponse.Error(e.message ?: "Failure To make request.", -1)
@@ -39,7 +38,7 @@ class MainVenueRepository @Inject constructor(
 
     companion object{
         private const val TAG = "MainVenueRepository"
-        private const val CLIENT_ID = "client_id"
-        private const val CLIENT_SECRET = "client_secret"
+        const val CLIENT_ID = "client_id"
+        const val CLIENT_SECRET = "client_secret"
     }
 }

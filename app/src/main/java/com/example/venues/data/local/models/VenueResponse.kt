@@ -5,5 +5,5 @@ import com.example.venues.data.local.models.Response
 
 data class VenueResponse(
     val meta: Meta,
-    val response: Response
+    val response: Response?= null
 )
