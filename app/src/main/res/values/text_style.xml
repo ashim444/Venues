@@ -4,6 +4,7 @@
         <item name="android:textSize">20sp</item>
         <item name="fontFamily">sans-serif</item>
         <item name="android:textColor">@color/Neutral.Dark</item>
+        <item name="android:textStyle">bold</item>
         <item name="fontWeight">400</item>
     </style>
 

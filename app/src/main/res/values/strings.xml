@@ -1,3 +1,13 @@
 <resources>
     <string name="app_name">Venues</string>
+
+    <string name="enable_permission">Retry</string>
+    <string name="open_settings">Open Settings</string>
+    <string name="permission_info">Application need location permission to search nearby venue. Enable permissions and run the application.</string>
+    <string name="empty_list">Empty venue list. Try searching or changing query string.</string>
+    <string name="location_permission_needed">Location permission is needed</string>
+    <string name="gps_disabled">GPS is disabled</string>
+    <string name="error_text">Check internet connection or try again later.</string>
+
+
 </resources>
