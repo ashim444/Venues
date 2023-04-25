@@ -12,7 +12,6 @@ class MainVenueRepository @Inject constructor(
     private val clientData: ClientData
 ) : VenueRepository {
 
-
     override suspend fun getVenue(params: MutableMap<String, String>) : LocalResponse<List<Venue>> {
         return try {
             val signedParams = signRequest(params)
@@ -33,8 +32,6 @@ class MainVenueRepository @Inject constructor(
         params[CLIENT_ID] = clientData.clientId
         return params as HashMap<String, String>
     }
-
-
 
     companion object{
         private const val TAG = "MainVenueRepository"

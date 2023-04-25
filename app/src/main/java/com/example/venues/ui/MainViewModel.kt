@@ -51,14 +51,13 @@ class MainViewModel @Inject constructor(
                 }
                 is LocalResponse.Success -> {
                     val data = venueResponse.data?.sortedBy { it.location.distance }!!
-                    if(!sortAscending) data.reversed()
+                    if (!sortAscending) data.reversed()
                     venueList = data
                     _venueEvent.value = VenueEvent.Success(data)
                 }
             }
         }
     }
-
 
     fun setQueryString(query: String) {
         _venueFilter.value.query = query
@@ -69,10 +68,10 @@ class MainViewModel @Inject constructor(
         _venueFilter.value.latLong = latLong
     }
 
-    fun sortData(){
+    fun sortData() {
         sortAscending = !sortAscending
         venueList?.let {
-            if(it.isNotEmpty()){
+            if (it.isNotEmpty()) {
                 venueList = it.reversed()
                 _venueEvent.value = VenueEvent.Success(it.reversed())
             }
@@ -81,7 +80,7 @@ class MainViewModel @Inject constructor(
 
     fun clearVenueList() {
         venueList?.let {
-            if(it.isNotEmpty()){
+            if (it.isNotEmpty()) {
                 venueList = emptyList()
                 _venueEvent.value = VenueEvent.Success(emptyList())
             }

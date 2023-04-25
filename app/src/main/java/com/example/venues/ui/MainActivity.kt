@@ -6,17 +6,16 @@ import android.content.Intent
 import android.location.Location
 import android.location.LocationListener
 import android.location.LocationManager
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.Settings
 import android.util.Log
 import android.view.View
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
+import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
-import com.example.venues.R
 import com.example.venues.base.hasLocationPermission
 import com.example.venues.databinding.ActivityMainBinding
 import com.example.venues.ui.adapter.VenuesAdapter
@@ -79,6 +78,7 @@ class MainActivity : AppCompatActivity(), LocationListener {
             it.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 300L, 200.0F, this)
         }
     }
+
     private fun setSearchListener() {
         Log.d(TAG, "setSearchListener: ")
         binding.mainSearch.setOnCloseListener {
@@ -94,6 +94,7 @@ class MainActivity : AppCompatActivity(), LocationListener {
                 }
                 return true
             }
+
             override fun onQueryTextChange(p0: String?): Boolean {
                 if (p0.isNullOrEmpty()) {
                     viewModel.clearVenueList()
@@ -123,7 +124,6 @@ class MainActivity : AppCompatActivity(), LocationListener {
         binding.retryPermissionButton.visibility = permissionViewVisibility
         binding.openSettingsButton.visibility = permissionViewVisibility
     }
-
 
     private fun setUpListener() {
         binding.run {
