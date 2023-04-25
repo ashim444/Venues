@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="H1">
+        <item name="android:textSize">20sp</item>
+        <item name="fontFamily">sans-serif</item>
+        <item name="android:textColor">@color/Neutral.Dark</item>
+        <item name="fontWeight">400</item>
+    </style>
+
+    <style name="Body">
+        <item name="android:textSize">16sp</item>
+        <item name="fontFamily">sans-serif</item>
+        <item name="android:textColor">@color/Neutral.Dark</item>
+        <item name="fontWeight">400</item>
+    </style>
+</resources>
